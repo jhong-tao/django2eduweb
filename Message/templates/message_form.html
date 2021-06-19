@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-<form action="/form/" method="post" class="smart-green">
+<form action="/message_form/" method="post" class="smart-green">
     <h1>留言信息
         <span>请留下你的信息.</span>
     </h1>
@@ -39,6 +39,7 @@
         <span>&nbsp;</span>
         <input type="submit" class="button" value="提交"/>
     </label>
+    {% csrf_token %}<!--数据提交安全机制-->
 </form>
 
 </body>
