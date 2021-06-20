@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.courses.apps.CoursesConfig',
+    'apps.users.apps.UsersConfig',
+    'apps.organizations.apps.OrganizationsConfig',
+    'apps.operations.apps.OperationsConfig',
 ]
 
 MIDDLEWARE = [
@@ -105,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.UserProfile'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
