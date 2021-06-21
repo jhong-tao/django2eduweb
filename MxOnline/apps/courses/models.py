@@ -3,6 +3,7 @@ from datetime import datetime
 from django.db import models
 
 from apps.users.models import BaseModel
+from apps.organizations.models import Teacher
 
 # 1.设计表结构有几个重要的点
 '''
@@ -16,10 +17,11 @@ from apps.users.models import BaseModel
 
 
 class Course(BaseModel):
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, verbose_name='讲师')
     name = models.CharField(verbose_name='课程名', max_length=50)
     desc = models.CharField(verbose_name='课程描述', max_length=300)
     learn_times = models.IntegerField(default=0, verbose_name='学习时长(分钟数)')
-    degree = models.CharField(verbose_name='难度', choices=(('cj', '初级'), ('zj', '中级')))
+    degree = models.CharField(max_length=2, verbose_name='难度', choices=(('cj', '初级'), ('zj', '中级')))
     students = models.IntegerField(default=0, verbose_name='学习人数')
     fav_nums = models.IntegerField(default=0, verbose_name='收藏人数')
     click_nums = models.IntegerField(default=0, verbose_name='点击数')
