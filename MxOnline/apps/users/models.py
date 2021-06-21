@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -5,6 +7,13 @@ GENDER_CHOICES = (
     ('male', '男'),
     ('female', '女')
 )
+
+
+class BaseModel(models.Model):
+    add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
+
+    class Meta:
+        abstract = True
 
 
 class UserProfile(AbstractUser):
