@@ -31,11 +31,14 @@ class Course(BaseModel):
     teacher_tell = models.CharField(default='', max_length=300, verbose_name='老师告诉你')
 
     detail = models.TextField(verbose_name='课程详情')
-    image = models.ImageField(upload_to='courses/%Y%m', verbose_name='封面图', max_length=100)
+    image = models.ImageField(upload_to='media/courses/%Y%m', verbose_name='封面图', max_length=100)
 
     class Meta:
         verbose_name = '课程信息'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class Lesson(BaseModel):
@@ -46,6 +49,9 @@ class Lesson(BaseModel):
     class Meta:
         verbose_name = '课程章节'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class Video(BaseModel):
@@ -58,12 +64,18 @@ class Video(BaseModel):
         verbose_name = '视频'
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class CourseResource(BaseModel):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='课程')
     name = models.CharField(max_length=100, verbose_name='名称')
-    file = models.FileField(unique='course/resource/%Y/%m', verbose_name='下载地址', max_length=200)
+    file = models.FileField(unique='media/course/resource/%Y/%m', verbose_name='下载地址', max_length=200)
 
     class Meta:
         verbose_name = '课程资源'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name

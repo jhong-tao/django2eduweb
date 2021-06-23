@@ -133,5 +133,5 @@ USE_TZ = False
 STATIC_URL = '/static/'
 # 配置全局的static路径
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, '/static/')
 ]
