@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))      # BASE_DIR 也就是获取当前网站的根目录：127.0.0.1:8000
 
 
 # Quick-start development settings - unsuitable for production
@@ -131,7 +131,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# 配置全局的static路径
+# 配置全局的static路径‘’ 单引号中不用添加斜杠，直接给路径名称就可以
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, '/static/')
+    os.path.join(BASE_DIR, 'static'),
 ]

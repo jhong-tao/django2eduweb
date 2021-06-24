@@ -19,6 +19,7 @@ from apps.courses.models import Course, Lesson, Video, CourseResource
 class GlobalSettings(object):
     site_title = '慕学后台管理系统'
     site_footer = '慕学在线网'
+    # menu_style = 'accordion'
 
 
 class BaseSettings(object):
@@ -51,7 +52,7 @@ class CourseResourceAdmin(object):
     list_display = ['course', 'name', 'add_time']
     search_fields = ['course', 'name']
     list_filter = ['course', 'name', 'add_time']
-    # list_editable = ['lesson', 'name', 'add_time']
+    # list_editable = ['lesson', 'name', 'add_time']        #侧边按钮折叠
 
 
 xadmin.site.register(Course, CourseAdmin)
