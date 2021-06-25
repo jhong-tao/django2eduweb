@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.operations.apps.OperationsConfig',
     'crispy_forms',
     'xadmin.apps.XAdminConfig',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# 云片网相关设置
+yp_apikey = 'e3a4560f4769ffef24077aa73ec8498f'

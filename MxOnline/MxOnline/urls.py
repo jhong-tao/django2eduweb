@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url, include
 from django.views.generic import TemplateView
+from django.views.decorators.csrf import csrf_exempt
 import xadmin
 
-from apps.users.views import LoginView
+from apps.users.views import LoginView, LogoutView, SendSmsView
 
-url = 'http://127.0.0.1:8000'
+# url = 'http://127.0.0.1:8000'
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -28,6 +30,9 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),       # ''代表了网站根目录 url
     # path('login/', TemplateView.as_view(template_name='login.html'), name='login'),
     path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    url(r'^captcha/', include('captcha.urls')),
+    url(r'^send_sms/', csrf_exempt(SendSmsView.as_view()), name='send_sms'),
 ]
 
 # 1.CBV(class base view) FBV(fanctiong base view)
