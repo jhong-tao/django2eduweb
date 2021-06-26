@@ -27,4 +27,4 @@ class DynamicLoginForm(forms.Form):
     图像验证码
     """
     mobile = forms.CharField(required=True, min_length=11, max_length=11)
-    captcha = CaptchaField()
+    captcha = CaptchaField()    # 图像验证码
