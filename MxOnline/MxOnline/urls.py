@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt        # 去除crsf验证
 import xadmin
 
-from apps.users.views import LoginView, LogoutView, SendSmsView
+from apps.users.views import LoginView, LogoutView, SendSmsView, DynamicLoginView,RegisterView
 
 # url = 'http://127.0.0.1:8000  '
 
@@ -30,9 +30,19 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),       # ''代表了网站根目录 url
     # path('login/', TemplateView.as_view(template_name='login.html'), name='login'),
     path('login/', LoginView.as_view(), name='login'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('d_login/', DynamicLoginView.as_view(), name='d_login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     url(r'^captcha/', include('captcha.urls')),
     url(r'^send_sms/', csrf_exempt(SendSmsView.as_view()), name='send_sms'),
 ]
 
 # 1.CBV(class base view) FBV(fanctiong base view)
+
+# 编写一个view的步骤
+"""
+1. view 代码
+2. 配置url
+3. 修改html中访问的相关地址
+"""
+

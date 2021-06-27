@@ -139,3 +139,10 @@ STATICFILES_DIRS=[
 
 # 云片网相关设置
 yp_apikey = 'e3a4560f4769ffef24077aa73ec8498f'
+
+# redis相关配置
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = 6379
+# 1. 如果重启Django变量不存在
+# 2. 如果验证码越来越多，内存占用越来越大，验证码过期问题
+# 3. redis k-v数据库
